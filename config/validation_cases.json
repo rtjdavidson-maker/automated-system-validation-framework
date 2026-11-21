@@ -1,0 +1,10 @@
+{
+  "project": "Automated System Validation Framework",
+  "cases": [
+    {"id": "VOLTAGE_RANGE", "description": "Power rail within 3.0–3.5 V", "field": "voltage_v", "rule": "between", "expected": [3.0, 3.5]},
+    {"id": "TEMP_RANGE", "description": "Operating temperature within 0–70 C", "field": "temperature_c", "rule": "between", "expected": [0.0, 70.0]},
+    {"id": "RESPONSE_TIME", "description": "Response latency <= 100 ms", "field": "latency_ms", "rule": "max", "expected": 100.0},
+    {"id": "FIRMWARE_MIN", "description": "Minimum supported firmware 1.2.0", "field": "firmware_version", "rule": "min_version", "expected": "1.2.0"},
+    {"id": "DEVICE_ONLINE", "description": "Device responds to health check", "field": "responds", "rule": "equals", "expected": true}
+  ]
+}
