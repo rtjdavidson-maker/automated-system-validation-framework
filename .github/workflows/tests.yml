@@ -1,0 +1,24 @@
+name: Automated validation framework tests
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+      - name: Install Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: Install test tools
+        run: python -m pip install -r requirements.txt
+      - name: Run pytest
+        run: python -m pytest -v
+      - name: Run validation smoke test
+        run: |
+          python run.py --profile baseline
+          python run.py --profile recovered
+          python run.py --history
